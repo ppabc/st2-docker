@@ -7,7 +7,9 @@ ENV ST2_PASSWORD=changeme
 # Prepare the environment and install StackStorm (install script)
 RUN export DEBIAN_FRONTEND=noninteractive \
 	&& export NO_PROXY=localhost,127.0.0.1,${HOSTNAME} \
+	&& add-apt-repository ppa:jonathonf/python-2.7 \
 	&& apt-get update \
+	&& apt-get upgrade python \
 	&& apt-get dist-upgrade --yes \
 	&& apt-get install --yes curl vim gnupg-curl openssh-server tree \
 	&& /etc/init.d/rsyslog start \
