@@ -7,7 +7,8 @@ ENV ST2_PASSWORD=changeme
 # Prepare the environment and install StackStorm (install script)
 RUN export DEBIAN_FRONTEND=noninteractive \
 	&& export NO_PROXY=localhost,127.0.0.1,${HOSTNAME} \
-	&& apt-get install software-properties-common \
+	&& apt-get update \
+	&& apt-get install software-properties-common python-software-properties \
 	&& add-apt-repository ppa:jonathonf/python-2.7 \
 	&& apt-get update \
 	&& apt-get upgrade python \
